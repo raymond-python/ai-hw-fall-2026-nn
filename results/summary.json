@@ -1,0 +1,80 @@
+[
+  {
+    "tag": "mlp_no_aug",
+    "model": "mlp",
+    "aug": "no_aug",
+    "params": 203530,
+    "epochs": 10,
+    "train_time_sec": 54.5,
+    "best_val_acc": 98.66,
+    "test_acc": 98.29,
+    "test_errors": 171,
+    "perturbed_test_acc": 50.43,
+    "device": "cpu"
+  },
+  {
+    "tag": "mlp_aug",
+    "model": "mlp",
+    "aug": "aug",
+    "params": 203530,
+    "epochs": 10,
+    "train_time_sec": 85.6,
+    "best_val_acc": 98.24,
+    "test_acc": 97.87,
+    "test_errors": 213,
+    "perturbed_test_acc": 91.49,
+    "device": "cpu"
+  },
+  {
+    "tag": "cnn_no_aug",
+    "model": "cnn",
+    "aug": "no_aug",
+    "params": 468010,
+    "epochs": 8,
+    "train_time_sec": 527.1,
+    "best_val_acc": 99.72,
+    "test_acc": 99.59,
+    "test_errors": 41,
+    "perturbed_test_acc": 85.74,
+    "device": "cpu"
+  },
+  {
+    "tag": "cnn_aug",
+    "model": "cnn",
+    "aug": "aug",
+    "params": 468010,
+    "epochs": 8,
+    "train_time_sec": 546.9,
+    "best_val_acc": 99.48,
+    "test_acc": 99.54,
+    "test_errors": 46,
+    "perturbed_test_acc": 98.63,
+    "device": "cpu"
+  },
+  {
+    "tag": "transformer_no_aug",
+    "model": "transformer",
+    "aug": "no_aug",
+    "params": 139018,
+    "epochs": 15,
+    "train_time_sec": 397.6,
+    "best_val_acc": 98.44,
+    "test_acc": 98.01,
+    "test_errors": 199,
+    "perturbed_test_acc": 53.26,
+    "device": "cpu"
+  },
+  {
+    "tag": "transformer_aug",
+    "model": "transformer",
+    "aug": "aug",
+    "params": 139018,
+    "epochs": 15,
+    "train_time_sec": 439.2,
+    "best_val_acc": 98.44,
+    "test_acc": 98.31,
+    "test_errors": 169,
+    "perturbed_test_acc": 94.72,
+    "device": "cpu"
+  }
+]

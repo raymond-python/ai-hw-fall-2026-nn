@@ -1,0 +1,7 @@
+tag,params,epochs,train_time_sec,best_val_acc,test_acc,test_errors,perturbed_test_acc
+mlp_no_aug,203530,10,54.5,98.66,98.29,171,50.43
+mlp_aug,203530,10,85.6,98.24,97.87,213,91.49
+cnn_no_aug,468010,8,527.1,99.72,99.59,41,85.74
+cnn_aug,468010,8,546.9,99.48,99.54,46,98.63
+transformer_no_aug,139018,15,397.6,98.44,98.01,199,53.26
+transformer_aug,139018,15,439.2,98.44,98.31,169,94.72
