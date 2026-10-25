@@ -1,0 +1,52 @@
+name: Train and test on MNIST
+
+on:
+  push:
+    branches: [main]
+    paths: ["*.py", "requirements.txt", ".github/workflows/train.yml"]
+  workflow_dispatch:
+    inputs:
+      quick:
+        description: "Quick smoke test (1 epoch per model)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies (CPU PyTorch)
+        run: |
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+
+      - name: Train and test all models
+        run: python run_all.py ${{ inputs.quick && '--quick' || '' }}
+
+      - name: Build PDF presentation
+        run: python make_presentation.py
+
+      - name: Upload trained models as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: saved_models
+          path: saved_models/
+
+      - name: Commit results back to the repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add results/ presentation/ saved_models/ README.md
+          git commit -m "Training results ($(date -u +%Y-%m-%d))${{ inputs.quick && ' [quick]' || '' }}" || echo "nothing to commit"
+          git push
